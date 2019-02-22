@@ -1,7 +1,12 @@
 function LaunchCard(id, description) {
 	
 	this.description = description;
-	this.html = '';
+	this.html = '<div id="'+ this.id +'">'+
+		'<img src="'+ this.description.image +'" />'+
+		'<h2>'+ this.description.rocketName +' '+ this.description.missionName +'</h2>'+
+		'<h3>'+ this.description.launchWindow +'</h3>'+
+		'<div>'+ this.description.missionDescription +'</div>'
+	+'</div>';
 
 	this.appendTo = function (element) {
 		$(element).append(this.html);
@@ -15,13 +20,12 @@ function LaunchCard(id, description) {
 
 }
 
-function Description(rocket, image, launchWindow, missionName, missionDescription) {
+function Description(rocketName, image, launchWindow, missionName, missionDescription) {
 	
-	this.rocket = rocket;
+	this.rocketName = rocketName;
 	this.image = image;
 	this.launchWindow = launchWindow;
 	this.missionName = missionName;
 	this.missionDescription = missionDescription;
-	this.html = '';
 
 }
