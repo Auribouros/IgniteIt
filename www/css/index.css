@@ -88,10 +88,10 @@ header{
 }
 
 div.rock{
-    background-color: turquoise;
+    background-color: #FF3F80;
     border-style: solid;
     border-width: 3px;
-    border-color: lightseagreen;
+    border-color: #3E50B4;
     padding: 10px;
     margin: auto;
     width: 75%;
