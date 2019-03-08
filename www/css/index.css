@@ -94,6 +94,8 @@ div.rock{
     border-color: lightseagreen;
     padding: 10px;
     margin: auto;
+    width: 75%;
+    height: 50%;
 }
 
 img.imgRock{
