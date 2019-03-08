@@ -1,0 +1,4 @@
+#Fri Mar 08 20:54:32 CET 2019
+base.0=C\:\\Users\\bu115h1t\\Documents\\Ignite It\\InginteIt2\\IgniteIt2\\IgniteIt\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex

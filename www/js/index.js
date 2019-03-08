@@ -42,6 +42,27 @@ var app = {
                 missionDescription:"Alexis est encore plus PD"
             }
         }
+
+        $.get('https://launchlibrary.net/1.4/launch', {next: 5}, function (launchData) {
+            let launches = launchData.launches;
+            for (var i = 0; i < launches.length; i++) {
+                let currentLaunch = launches[i];
+                launchesObjects[i] = new LaunchData(currentLaunch);
+                /*launchesObjects[i] = {
+                    id: currentLaunch.id,
+                    description: {
+                        launchWindow: currentLaunch.windowstart +' '+ currentLaunch.windowend,
+                        rocketName:'',
+                        image: ''
+                    }
+                };*/
+            }
+            for (var i = 0; i < launchesObjects.length; i++) {
+                let currentLaunch = launchesObjects[i];
+                currentLaunch.setMissionData();
+            }
+        });
+
         letlc = new LaunchCard(Launch.id,Launch.description);
         letlc.appendTo("body");
         document.getElementById(""+this.id+"").addEventListener('click',test);
