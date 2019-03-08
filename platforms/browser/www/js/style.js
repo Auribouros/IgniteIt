@@ -20,6 +20,9 @@ function LaunchCard(id, description) {
 	this.descCSS = function (rules){
 		$('.desc').css(rules);
 	}
+	this.getVisibility = function(){
+		return $('.desc').css('visibility');
+	}
 
 }
 

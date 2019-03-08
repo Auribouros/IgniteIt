@@ -46,7 +46,11 @@ var app = {
         letlc.appendTo("body");
         document.getElementById(""+this.id+"").addEventListener('click',test);
         function test() {
-            letlc.descCSS(rule ={visibility:'visible'})
+            if (letlc.getVisibility() == 'hidden') {
+                letlc.descCSS(rule ={visibility:'visible'});
+            }else{
+                letlc.descCSS(rule ={visibility:'hidden'});
+            }
         }
     }
 };
