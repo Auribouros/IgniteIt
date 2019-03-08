@@ -20,6 +20,16 @@ var app = {
     // Application Constructor
     initialize: function() {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
+        var Launch ={
+            id:1,
+            description:{
+                image:"../img/logo.png",
+                rocketName:"rcketMan",
+                launchWindow:"23-06-2019",
+                missionDescription:"axel est pd"
+            }
+        }
+        LaunchCard(Launch.id,Launch.description);
     },
 
     // deviceready Event Handler
