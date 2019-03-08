@@ -2,7 +2,7 @@ function LaunchCard(id, description) {
 	
 	this.description = description;
 	this.html = '<div class="rock" id="'+ this.id +'">'+
-		'<img src="'+ this.description.image +'" />'+
+		'<img class="imgRock" align="left" src="'+ this.description.image +'" />'+
 		'<h2>'+ this.description.rocketName +' '+ this.description.missionName +'</h2>'+
 		'<h3>'+ this.description.launchWindow +'</h3>'+
 		'<div>'+ this.description.missionDescription +'</div>'
