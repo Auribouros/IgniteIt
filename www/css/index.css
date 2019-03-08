@@ -85,6 +85,7 @@ header{
     color: whitesmoke;
     font-size: 52px;
     font-weight: bold;
+    font-family: "Times New Roman", Times, serif;
 }
 
 div.rock{
@@ -106,17 +107,20 @@ img.imgRock{
 h2.rockName{
     font-size: 36px;
     color: white;
+    font-family: "Times New Roman", Times, serif;
 }
 
 h3.rockDate{
     font-size: 24px;
     color: white;
+    font-family: "Times New Roman", Times, serif;
 }
 
 div.desc{
     visibility: hidden;
     font-size: 18px;
     color: white;
+    font-family: "Times New Roman", Times, serif;
 }
 
 body{
