@@ -24,7 +24,7 @@ var app = {
             id:1,
             description:{
                 image:"../img/logo.png",
-                rocketName:"rcketMan",
+                rocketName:"rocketMan",
                 launchWindow:"23-06-2019",
                 missionDescription:"axel est pd"
             }
