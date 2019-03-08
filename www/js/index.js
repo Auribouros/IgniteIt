@@ -25,11 +25,13 @@ var app = {
             description:{
                 image:"../img/logo.png",
                 rocketName:"rocketMan",
+                missionName:"elton john",
                 launchWindow:"23-06-2019",
                 missionDescription:"axel est pd"
             }
         }
-        LaunchCard(Launch.id,Launch.description);
+        letlc = new LaunchCard(Launch.id,Launch.description);
+        letlc.appendTo("body");
     },
 
     // deviceready Event Handler
