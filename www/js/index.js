@@ -46,7 +46,7 @@ var app = {
         letlc.appendTo("body");
         document.getElementById(""+this.id+"").addEventListener('click',test);
         function test() {
-            
+            letlc.descCSS(rule ={visibility:'visible'})
         }
     }
 };

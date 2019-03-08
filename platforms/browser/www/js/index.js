@@ -39,14 +39,14 @@ var app = {
                 rocketName:"rocketMan",
                 missionName:"elton john",
                 launchWindow:"23-06-2019",
-                missionDescription:"axel est pd"
+                missionDescription:"Alexis est encore plus PD"
             }
         }
         letlc = new LaunchCard(Launch.id,Launch.description);
         letlc.appendTo("body");
         document.getElementById(""+this.id+"").addEventListener('click',test);
         function test() {
-            alert(Launch.id);
+            letlc.descCSS(rule ={visibility:'visible'})
         }
     }
 };

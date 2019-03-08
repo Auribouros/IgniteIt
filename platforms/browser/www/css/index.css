@@ -83,7 +83,8 @@ body {
 header{
     text-align: center;
     background-color: whitesmoke;
-    font-size: 42;
+    font-size: 54px;
+    font-weight: bold;
 }
 
 div.rock{
@@ -91,6 +92,32 @@ div.rock{
     border-style: solid;
     border-width: 3px;
     border-color: lightseagreen;
+    padding: 10px;
+    margin: auto;
+}
 
-    
+img.imgRock{
+    width: 100%; 
+    height: 100%; 
+    object-fit: contain; 
+}
+
+h2.rockName{
+    font-size: 38px;
+    color: white;
+}
+
+h3.rockDate{
+    font-size: 26px;
+    color: white;
+}
+
+div.desc{
+    visibility: hidden;
+    font-size: 20px;
+    color: white;
+}
+
+body{
+    background-image:url(../img/space.png);
 }
