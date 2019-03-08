@@ -113,6 +113,7 @@ h3.rockDate{
 }
 
 div.desc{
+    visibility: hidden;
     font-size: 20px;
     color: white;
 }

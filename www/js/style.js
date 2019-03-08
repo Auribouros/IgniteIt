@@ -17,6 +17,9 @@ function LaunchCard(id, description) {
 	this.imageCSS = function (rules) {
 		$('#'+ id +' img').css(rules);
 	};
+	this.descCSS = function (rules){
+		$('.desc').css(rules);
+	}
 
 }
 
