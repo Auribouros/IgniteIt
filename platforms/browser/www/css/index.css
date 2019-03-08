@@ -44,15 +44,6 @@ body {
     }
 }
 
-h1 {
-    font-size:24px;
-    font-weight:normal;
-    margin:0px;
-    overflow:visible;
-    padding:0px;
-    text-align:center;
-}
-
 .event {
     border-radius:4px;
     -webkit-border-radius:4px;
@@ -87,4 +78,19 @@ h1 {
 .blink {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
+}
+
+header{
+    text-align: center;
+    background-color: whitesmoke;
+    font-size: 42;
+}
+
+div.rock{
+    background-color: turquoise;
+    border-style: solid;
+    border-width: 3px;
+    border-color: lightseagreen;
+
+    
 }
