@@ -90,7 +90,7 @@ div.rock{
 
 img.imgRock{
     width: 125px; 
-    height: 200px; 
+    height: auto; 
 }
 
 h2.rockName{
