@@ -32,46 +32,12 @@ var app = {
     },
 
     receivedEvent: function(id) {
-        var Launch ={
-            id:1,
-            description:{
-                image:"../img/logo.png",
-                rocketName:"rocketMan",
-                missionName:"elton john",
-                launchWindow:"23-06-2019",
-                missionDescription:"Alexis est encore plus PD"
-            }
-        }
 
-        $.get('https://launchlibrary.net/1.4/launch', {next: 5}, function (launchData) {
-            let launches = launchData.launches;
-            for (var i = 0; i < launches.length; i++) {
-                let currentLaunch = launches[i];
-                launchesObjects[i] = new LaunchData(currentLaunch);
-                /*launchesObjects[i] = {
-                    id: currentLaunch.id,
-                    description: {
-                        launchWindow: currentLaunch.windowstart +' '+ currentLaunch.windowend,
-                        rocketName:'',
-                        image: ''
-                    }
-                };*/
-            }
-            for (var i = 0; i < launchesObjects.length; i++) {
-                let currentLaunch = launchesObjects[i];
-                currentLaunch.setMissionData();
-            }
-        });
-
-        letlc = new LaunchCard(Launch.id,Launch.description);
-        letlc.appendTo("body");
-        document.getElementById(""+this.id+"").addEventListener('click',test);
-        function test() {
-            if (letlc.getVisibility() == 'hidden') {
-                letlc.descCSS(rule ={visibility:'visible'});
-            }else{
-                letlc.descCSS(rule ={visibility:'hidden'});
-            }
+        let launches = getNNextLaunchesObjects(10);
+        for (var i = 0; i < launches.length; i++) {
+            launches[i].appendTo("body");
+            alert(launches[i].description.image);
+            launches[i].elementCSS({'background-image': 'url("'+ launches[i].description.image +'")'});
         }
     }
 };

@@ -1,6 +1,7 @@
 function LaunchCard(id, description) {
 	
 	this.description = description;
+	this.id = id;
 	this.html = '<div class="rock" id="'+ this.id +'">'+
 		'<img class="imgRock" align="left" src="'+ this.description.image +'" />'+
 		'<h2 class="rockName">'+ this.description.rocketName +' '+ this.description.missionName +'</h2>'+
@@ -12,10 +13,10 @@ function LaunchCard(id, description) {
 		$(element).append(this.html);
 	};
 	this.elementCSS = function (rules) {
-		$('#'+ id).css(rules);
+		$('#'+ this.id).css(rules);
 	};
 	this.imageCSS = function (rules) {
-		$('#'+ id +' img').css(rules);
+		$('#'+ this.id +' img').css(rules);
 	};
 	this.descCSS = function (rules){
 		$('.desc').css(rules);
