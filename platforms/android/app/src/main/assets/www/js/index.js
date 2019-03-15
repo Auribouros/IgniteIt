@@ -36,7 +36,7 @@ var app = {
         let launches = getNNextLaunchesObjects(10);
         for (var i = 0; i < launches.length; i++) {
             launches[i].appendTo("body");
-            alert(launches[i].description.image);
+            //alert(launches[i].description.image);
             launches[i].elementCSS({'background-image': 'url("'+ launches[i].description.image +'")'});
         }
     }
