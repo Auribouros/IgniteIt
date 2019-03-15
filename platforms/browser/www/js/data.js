@@ -34,7 +34,7 @@ function getNNextLaunchesObjects(n) {
 		launchesObjects[i] = {
 			id: launches[i].id,
 			description: {
-				launchWindow: 'start: '+ launches[i].windowstart +' end: '+ launches[i].windowend,
+				launchWindow: 'start: '+ launches[i].windowstart +'<br/> end: '+ launches[i].windowend,
 				missionName: (currentMission != null)? currentMission.missions[0].name : '',
 				missionDescription: (currentMission != null)? currentMission.missions[0].description : '',
 				rocketName: launches[i].name,

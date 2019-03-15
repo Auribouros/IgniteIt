@@ -36,8 +36,19 @@ var app = {
         let launches = getNNextLaunchesObjects(10);
         for (var i = 0; i < launches.length; i++) {
             launches[i].appendTo("body");
-            //alert(launches[i].description.image);
-            launches[i].elementCSS({'background-image': 'url("'+ launches[i].description.image +'")'});
+            if (launches[i].description.image != undefined) {
+                launches[i].elementCSS({'background-image': 'url("'+ launches[i].description.image +'")'});
+            }
+        }
+        $('.desc').hide();
+
+        let elements = document.getElementsByClassName('rock');
+       
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].addEventListener('click',showInfo);
+        }
+        function showInfo() {
+            $('#'+ this.id +' .desc').toggle();
         }
     }
 };
