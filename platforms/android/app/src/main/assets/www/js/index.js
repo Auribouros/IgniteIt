@@ -22,6 +22,7 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
     },
 
+
     // deviceready Event Handler
     //
     // Bind any cordova events here. Common events are:
@@ -30,16 +31,25 @@ var app = {
         this.receivedEvent('deviceready');
     },
 
-    // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+        let launches = getNNextLaunchesObjects(10);
+        for (var i = 0; i < launches.length; i++) {
+            launches[i].appendTo("body");
+            if (launches[i].description.image != undefined) {
+                launches[i].elementCSS({'background-image': 'url("'+ launches[i].description.image +'")'});
+            }
+        }
+        $('.desc').hide();
 
-        console.log('Received Event: ' + id);
+        let elements = document.getElementsByClassName('rock');
+       
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].addEventListener('click',showInfo);
+        }
+        function showInfo() {
+            $('#'+ this.id +' .desc').toggle();
+        }
     }
 };
 
