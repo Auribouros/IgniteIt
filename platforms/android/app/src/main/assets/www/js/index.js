@@ -33,23 +33,97 @@ var app = {
 
     receivedEvent: function(id) {
 
-        let launches = getNNextLaunchesObjects(10);
-        for (var i = 0; i < launches.length; i++) {
-            launches[i].appendTo("body");
-            if (launches[i].description.image != undefined) {
-                launches[i].elementCSS({'background-image': 'url("'+ launches[i].description.image +'")'});
-            }
-        }
-        $('.desc').hide();
+        init();
 
         let elements = document.getElementsByClassName('rock');
+        let lis = document.getElementsByTagName('LI');
+        let search = document.getElementById('query');
+        let searchBtn = document.getElementById('searchBtn');
        
         for (var i = 0; i < elements.length; i++) {
-            elements[i].addEventListener('click',showInfo);
+            elements[i].addEventListener('click', showInfo);
         }
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].addEventListener('click', selectFilter);
+        }
+        searchBtn.addEventListener('click', performSearch);
+        document.addEventListener("backbutton", init);
+
+        function init() {
+
+            $('#blackboard').html('');
+
+            launches = getNNextLaunchesObjects(10);
+
+            for (var i = 0; i < launches.length; i++) {
+                launches[i].appendTo('#blackboard');
+                launches[i].imageCSS({
+                    'max-width': $('.rock').width()*0.9,
+                    'margin': 'auto', 'padding': 0,
+                    'border-radius': '20px'
+                });
+            }
+
+            let elements = document.getElementsByClassName('rock');
+
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].addEventListener('click', showInfo);
+            }
+
+            $('body').css({'background-size': $(document).width() +'px '+ $(document).height +'px'});
+            $('.desc').hide();
+            
+        }
+
         function showInfo() {
             $('#'+ this.id +' .desc').toggle();
         }
+        function selectFilter() {
+            $('li').css({'background-color': 'rgba(0, 0, 0, 0)', 'color': 'white'});
+            $('li').data('selected', false);
+
+            $('#'+ this.id).css({'background-color': 'rgba(255, 255, 255, 1)', 'color': 'black'})
+            $('#'+ this.id).data('selected', true);
+        }
+
+        function performSearch() {
+
+            let query = $('#query').val();
+
+            if ($('#rocket').data('selected') == true) {
+
+                launches = getLaunchesFromRocketNameObjects($('#query').val());
+                
+                $('#blackboard').html('');
+                
+                for (let i = 0; i < launches.length; i++) {
+                    launches[i].appendTo('#blackboard');
+                    launches[i].imageCSS({'max-width': $('.rock').width()*0.9, 'margin': 'auto', 'padding': 0});
+                }
+                $('.desc').hide();
+                elements = document.getElementsByClassName('rock');
+                for (let i = 0; i < elements.length; i++) {
+                    elements[i].addEventListener('click', showInfo);
+                }
+            }
+            else if ($('#after').data('selected') == true) {
+
+                launches = getLaunchesAfterObjects($('#query').val());
+                
+                $('#blackboard').html('');
+                
+                for (let i = 0; i < launches.length; i++) {
+                    launches[i].appendTo('#blackboard');
+                    launches[i].imageCSS({'max-width': $('.rock').width()*0.9, 'margin': 'auto', 'padding': 0});
+                }
+                $('.desc').hide();
+                elements = document.getElementsByClassName('rock');
+                for (let i = 0; i < elements.length; i++) {
+                    elements[i].addEventListener('click', showInfo);
+                }
+            }//endif
+        }//end performSearch
+
     }
 };
 

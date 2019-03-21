@@ -50,4 +50,70 @@ function getNNextLaunchesObjects(n) {
 	
 }
 
+function getLaunchesFromRocketName(rocketName) {
+	return JSON.parse(getRemote({name: rocketName}, 'https://launchlibrary.net/1.4/launch')).launches;
+}
+
+function getLaunchesFromRocketNameObjects(rocketName) {
+	
+	let launches = getLaunchesFromRocketName(rocketName);
+	let launchesObjects = [];
+	let launchesCards = [];
+
+	for (let i = 0; i < launches.length; i++) {
+		
+		let currentMission = getMissionFromLaunchId(launches[i].id);
+		
+		launchesObjects[i] = {
+			id: launches[i].id,
+			description: {
+				launchWindow: 'start: '+ launches[i].windowstart +'<br/> end: '+ launches[i].windowend,
+				missionName: (currentMission != null)? currentMission.missions[0].name : '',
+				missionDescription: (currentMission != null)? currentMission.missions[0].description : '',
+				rocketName: launches[i].name,
+				image: getImageFromRocketName(launches[i].name.split('|')[0].replace(/([0-9]+\,[0-9]+|[\(\)\+]*| $)*/g, ''))
+			}
+		}
+
+		launchesCards[i] = new LaunchCard('id'+ i, launchesObjects[i].description);
+
+	}
+
+	return launchesCards;
+
+}
+
+function getLaunchesAfter(date) {
+	return JSON.parse(getRemote({startdate: date}, 'https://launchlibrary.net/1.4/launch')).launches;
+}
+
+function getLaunchesAfterObjects(date) {
+
+	let launches = getLaunchesAfter(date);
+	let launchesObjects = [];
+	let launchesCards = [];
+
+	for (let i = 0; i < launches.length; i++) {
+		
+		let currentMission = getMissionFromLaunchId(launches[i].id);
+		
+		launchesObjects[i] = {
+			id: launches[i].id,
+			description: {
+				launchWindow: 'start: '+ launches[i].windowstart +'<br/> end: '+ launches[i].windowend,
+				missionName: (currentMission != null)? currentMission.missions[0].name : '',
+				missionDescription: (currentMission != null)? currentMission.missions[0].description : '',
+				rocketName: launches[i].name,
+				image: getImageFromRocketName(launches[i].name.split('|')[0].replace(/([0-9]+\,[0-9]+|[\(\)\+]*| $)*/g, ''))
+			}
+		}
+
+		launchesCards[i] = new LaunchCard('id'+ i, launchesObjects[i].description);
+
+	}
+
+	return launchesCards;
+	
+}
+
 

@@ -37,13 +37,25 @@
        <!-- <header> launches </header>-->
     </head>
     <body id="body">
-        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-            <defs>
-                <filter id="f1" x="0" y="0">
-                  <feGaussianBlur in="SourceGraphic" stdDeviation="15" />
-                </filter>
-            </defs>
-        </svg>
+        
+        <div id="search"> 
+            <input id="query" type="text"><button id="searchBtn">Search</button>
+            <br><span>filters: </span>
+            <ul id="filters">
+                <li id="rocket">rocket</li>
+                <li id="after">after date (yyyy-mm-dd)</li>
+            </ul>
+        </div>
+
+        <br>
+        <hr>
+        <br>
+
+        <h1>Launches</h1>
+
+        <br>
+
+        <div id="blackboard"></div>
         
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>

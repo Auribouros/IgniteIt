@@ -2,10 +2,12 @@ function LaunchCard(id, description) {
 	
 	this.description = description;
 	this.id = id;
+	this.image = (this.description.image != undefined)? this.description.image : '';
 	this.html = '<div class="rock" id="'+ this.id +'">'+
 		'<h2 class="rockName">'+ this.description.rocketName +' '+ this.description.missionName +'</h2>'+
 		'<div class="desc">'+ 
-		'<h3 class="rockDate">'+ this.description.launchWindow +'</h3>'+
+		'<img src="'+ this.image +'" />'+
+		'<h3 class="rockDate">Launch window: <br>'+ this.description.launchWindow +'</h3>'+
 		this.description.missionDescription +
 		'</div>'
 	+'</div>';
