@@ -36,13 +36,14 @@ var app = {
         let launches = getNNextLaunchesObjects(10);
         for (var i = 0; i < launches.length; i++) {
             launches[i].appendTo("body");
-            if (launches[i].description.image != undefined) {
+            /*if (launches[i].description.image != undefined) {
                 launches[i].elementCSS({'background-image': 'url("'+ launches[i].description.image +'")'});
-            }
+            }*/
         }
         $('.desc').hide();
 
         let elements = document.getElementsByClassName('rock');
+        let bShouldShowImg = false;
        
         for (var i = 0; i < elements.length; i++) {
             elements[i].addEventListener('click',showInfo);
@@ -50,6 +51,12 @@ var app = {
         function showInfo() {
             $('#'+ this.id +' .desc').toggle();
         }
+        /*function showImg() {
+            if (bShouldShowImg) {
+                $('#'+ this.id).css('background-image', 'url()');
+            }
+            bShouldShowImg = (bShouldShowImg)? false : true;
+        }*/
     }
 };
 
