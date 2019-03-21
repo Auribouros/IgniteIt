@@ -56,16 +56,13 @@ div.rock{
     margin: 0;
     padding: 1px;
     text-align: justify;
-    /*background-image: url('../img/back5.jpg');*/
-    background-size: cover;
-    background-position: center;
-    /*margin: 1%;*/
     padding: 1%;
     margin: 5%;
     border-radius: 50px;
     border-style: solid;
     border-width: 1px;
-    border-color: black;
+    border-color: white;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 img.imgRock{
@@ -75,7 +72,7 @@ img.imgRock{
 
 h2.rockName{
     font-size: 1.2em;
-    color: black;
+    color: white;
     font-family: "roboto", Times, serif;
    /* background-color: rgba(255, 255, 255, 1);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
@@ -89,7 +86,7 @@ h2.rockName{
 
 h3.rockDate{
     font-size: 1em;
-    color: black;
+    color: white;
     font-family: "roboto", Times, serif;
     /*margin: 0;
     background-color: rgba(255, 255, 255, 1);
@@ -100,19 +97,59 @@ h3.rockDate{
 div.desc{
     /*display: none;*/
     font-size: 1em;
-    color: black;
+    color: white;
     font-family: "roboto", Times, serif;
-    background-color: rgba(255, 255, 255, 1);
+    /*background-color: rgba(255, 255, 255, 1);*/
     padding: 5%;
     /*margin: 0;*/
 }
 
 body{
-    /*background-image:url(../img/back1.jpg);*/
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-color: white;
+    background-image:url(../img/back.jpg);
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+li {
+    padding: 6px;
+    border: solid 1px white;
+    border-radius: 50px;
+    display: inline-block;
+    font-family: 'roboto';
+    color: white;
+}
+
+input {
+    margin-bottom: 1%;
+    width: 80%;
+    padding: 10px;
+    font-family: 'roboto';
+    font-size: 1.5em;
+    color: white;
+    border: solid 1px white;
+    /*border-radius: 50px;*/
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+button {
+    padding: 10px;
+    font-family: 'roboto';
+    font-size: 1.5em;
+    color: white;
+    border: solid 1px white;
+    /*border-radius: 50px;*/
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+#search {
+    text-align: center;
 }
 
 @font-face {
