@@ -124,10 +124,10 @@ li {
 
 input {
     margin-bottom: 1%;
-    width: 80%;
+    width: 60%;
     padding: 10px;
     font-family: 'roboto';
-    font-size: 1.5em;
+    font-size: 1.2em;
     color: white;
     border: solid 1px white;
     /*border-radius: 50px;*/
@@ -137,9 +137,10 @@ input {
 }
 
 button {
+    width: 25%;
     padding: 10px;
     font-family: 'roboto';
-    font-size: 1.5em;
+    font-size: 1.2em;
     color: white;
     border: solid 1px white;
     /*border-radius: 50px;*/
@@ -150,6 +151,10 @@ button {
 
 #search {
     text-align: center;
+}
+
+input:focus, button:focus {
+    outline: none;
 }
 
 @font-face {

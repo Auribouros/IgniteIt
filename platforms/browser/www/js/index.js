@@ -33,13 +33,7 @@ var app = {
 
     receivedEvent: function(id) {
 
-        let launches = getNNextLaunchesObjects(10);
-        for (var i = 0; i < launches.length; i++) {
-            launches[i].appendTo('#blackboard');
-            launches[i].imageCSS({'max-width': $('.rock').width()*0.9, 'margin': 'auto', 'padding': 0});
-        }
-        $('body').css({'background-size': $(document).width() +'px '+ $(document).height +'px'});
-        $('.desc').hide();
+        init();
 
         let elements = document.getElementsByClassName('rock');
         let lis = document.getElementsByTagName('LI');
@@ -52,8 +46,30 @@ var app = {
         for (var i = 0; i < lis.length; i++) {
             lis[i].addEventListener('click', selectFilter);
         }
-        //search.addEventListener('input', performSearch);
         searchBtn.addEventListener('click', performSearch);
+        document.addEventListener("backbutton", init);
+
+        function init() {
+
+            $('#blackboard').html('');
+
+            launches = getNNextLaunchesObjects(10);
+
+            for (var i = 0; i < launches.length; i++) {
+                launches[i].appendTo('#blackboard');
+                launches[i].imageCSS({'max-width': $('.rock').width()*0.9, 'margin': 'auto', 'padding': 0});
+            }
+
+            let elements = document.getElementsByClassName('rock');
+
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].addEventListener('click', showInfo);
+            }
+
+            $('body').css({'background-size': $(document).width() +'px '+ $(document).height +'px'});
+            $('.desc').hide();
+            
+        }
 
         function showInfo() {
             $('#'+ this.id +' .desc').toggle();
@@ -86,13 +102,24 @@ var app = {
                     elements[i].addEventListener('click', showInfo);
                 }
             }
-            else if ($('#location').data('selected') == true) {
+            else if ($('#after').data('selected') == true) {
 
-            }
-            else if ($('#missionType').data('selected') == true) {
+                launches = getLaunchesAfterObjects($('#query').val());
+                
+                $('#blackboard').html('');
+                
+                for (let i = 0; i < launches.length; i++) {
+                    launches[i].appendTo('#blackboard');
+                    launches[i].imageCSS({'max-width': $('.rock').width()*0.9, 'margin': 'auto', 'padding': 0});
+                }
+                $('.desc').hide();
+                elements = document.getElementsByClassName('rock');
+                for (let i = 0; i < elements.length; i++) {
+                    elements[i].addEventListener('click', showInfo);
+                }
+            }//endif
+        }//end performSearch
 
-            }
-        }
     }
 };
 

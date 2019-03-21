@@ -20,7 +20,7 @@
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
 
-.event {
+/*.event {
     border-radius:4px;
     -webkit-border-radius:4px;
     color:#FFFFFF;
@@ -37,6 +37,12 @@
 .event.received {
     background-color:#4B946A;
     display:none;
+}*/
+
+h1{
+    text-align: center;
+    color: white;
+    font-family: 'roboto';
 }
 
 header{
@@ -151,6 +157,15 @@ button {
 
 #search {
     text-align: center;
+}
+
+input:focus, button:focus {
+    outline: none;
+}
+
+span{
+    color: white;
+    font-family: 'roboto';
 }
 
 @font-face {
