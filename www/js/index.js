@@ -49,6 +49,9 @@ var app = {
         searchBtn.addEventListener('click', performSearch);
         document.addEventListener("backbutton", init);
 
+        /**
+         * Makes a basic API call and presents the results to the user
+         */
         function init() {
 
             $('#blackboard').html('');
@@ -75,9 +78,16 @@ var app = {
             
         }
 
+        /**
+         * Shows the description of a launch.
+         */
         function showInfo() {
             $('#'+ this.id +' .desc').toggle();
         }
+
+        /**
+         * Selects a filter clicked by the user
+         */
         function selectFilter() {
             $('li').css({'background-color': 'rgba(0, 0, 0, 0)', 'color': 'white'});
             $('li').data('selected', false);
@@ -86,6 +96,9 @@ var app = {
             $('#'+ this.id).data('selected', true);
         }
 
+        /**
+         * Searches the API with a user query and a filter applied on it and presents the results to the user
+         */
         function performSearch() {
 
             let query = $('#query').val();

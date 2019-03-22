@@ -30,7 +30,7 @@ function LaunchCard(id, description) {
 
 }
 
-function Description(rocketName, image, launchWindow, missionName, missionDescription) {
+/*function Description(rocketName, image, launchWindow, missionName, missionDescription) {
 	
 	this.rocketName = rocketName;
 	this.image = image;
@@ -38,4 +38,4 @@ function Description(rocketName, image, launchWindow, missionName, missionDescri
 	this.missionName = missionName;
 	this.missionDescription = missionDescription;
 
-}
+}*/

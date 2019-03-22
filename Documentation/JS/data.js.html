@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: data.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: data.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Gets contents from a RESTful API
+ *
+ * @param      {object}  data  Call parameters
+ * @param      {string}  url   The API URL
+ */
+function getRemote(data, url) {
+    return $.ajax({
+        type: "GET",
+        data: data,
+        url: url,
+        async: false
+    }).responseText;
+}
+
+/**
+ * Returns the n next launches to come
+ *
+ * @param      {Number}  n  Number of launches to return
+ * @return     {Object} JSON object
+ */
+function getNNextLaunches(n) {
+	return JSON.parse(getRemote({next: n}, 'https://launchlibrary.net/1.4/launch'));
+}
+
+/**
+ * Returns the mission corresponding to a launch
+ *
+ * @param      {Number}  id  Launch id
+ * @return     {Object} JSON object
+ */
+function getMissionFromLaunchId(id) {
+	let result = JSON.parse(getRemote({launchid: id}, 'https://launchlibrary.net/1.4/mission'));
+	return (result.count > 0)? result : null;
+}
+
+/**
+ * Returns a rocket's image
+ *
+ * @param      {string}  name  Name of the rocket
+ * @return     {string} Image URL
+ */
+function getImageFromRocketName(name) {
+	//alert('['+ name +']');
+	let result = JSON.parse(getRemote({name: name}, 'https://launchlibrary.net/1.4/rocket'));
+	return (result.count > 0)? result.rockets[0].imageURL : '';
+}
+
+/**
+ * Returns the n next launches to come as LaunchCard objects
+ *
+ * @param      {Number}  n  Number of launches to return
+ * @return     {Array} LaunchCard array
+ */
+function getNNextLaunchesObjects(n) {
+
+	let launches = getNNextLaunches(n).launches;
+	let launchesObjects = [];
+	let launchesCards = [];
+
+	for (var i = 0; i &lt; launches.length; i++) {
+		let currentMission = getMissionFromLaunchId(launches[i].id);
+		launchesObjects[i] = {
+			id: launches[i].id,
+			description: {
+				launchWindow: 'start: '+ launches[i].windowstart +'&lt;br/> end: '+ launches[i].windowend,
+				missionName: (currentMission != null)? currentMission.missions[0].name : '',
+				missionDescription: (currentMission != null)? currentMission.missions[0].description : '',
+				rocketName: launches[i].name,
+				image: getImageFromRocketName(launches[i].name.split('|')[0].replace(/([0-9]+\,[0-9]+|[\(\)\+]*| $)*/g, ''))
+			}
+		}
+
+		launchesCards[i] = new LaunchCard('id'+ i, launchesObjects[i].description);
+
+	}
+
+	return launchesCards;
+	
+}
+
+/**
+ * Returns the launches matching a rocket name
+ *
+ * @param      {string}  rocketName  Rocket name
+ * @return     {Object} JSON object
+ */
+function getLaunchesFromRocketName(rocketName) {
+	return JSON.parse(getRemote({name: rocketName}, 'https://launchlibrary.net/1.4/launch')).launches;
+}
+
+/**
+ * Returns the launches matching a rocket name as LaunchCard objects
+ *
+ * @param      {string}  rocketName  Rocket name
+ * @return     {Array} LaunchCard array
+ */
+function getLaunchesFromRocketNameObjects(rocketName) {
+	
+	let launches = getLaunchesFromRocketName(rocketName);
+	let launchesObjects = [];
+	let launchesCards = [];
+
+	for (let i = 0; i &lt; launches.length; i++) {
+		
+		let currentMission = getMissionFromLaunchId(launches[i].id);
+		
+		launchesObjects[i] = {
+			id: launches[i].id,
+			description: {
+				launchWindow: 'start: '+ launches[i].windowstart +'&lt;br/> end: '+ launches[i].windowend,
+				missionName: (currentMission != null)? currentMission.missions[0].name : '',
+				missionDescription: (currentMission != null)? currentMission.missions[0].description : '',
+				rocketName: launches[i].name,
+				image: getImageFromRocketName(launches[i].name.split('|')[0].replace(/([0-9]+\,[0-9]+|[\(\)\+]*| $)*/g, ''))
+			}
+		}
+
+		launchesCards[i] = new LaunchCard('id'+ i, launchesObjects[i].description);
+
+	}
+
+	return launchesCards;
+
+}
+
+/**
+ * Returns the launches after a specified date
+ *
+ * @param      {string}  date  Specified date
+ * @return     {Object} JSON Object
+ */
+function getLaunchesAfter(date) {
+	return JSON.parse(getRemote({startdate: date}, 'https://launchlibrary.net/1.4/launch')).launches;
+}
+
+/**
+ * Returns the launches after a specified date as LaunchCard objects
+ *
+ * @param      {string}  date  Specified date
+ * @return     {Array} LaunchCard array
+ */
+function getLaunchesAfterObjects(date) {
+
+	let launches = getLaunchesAfter(date);
+	let launchesObjects = [];
+	let launchesCards = [];
+
+	for (let i = 0; i &lt; launches.length; i++) {
+		
+		let currentMission = getMissionFromLaunchId(launches[i].id);
+		
+		launchesObjects[i] = {
+			id: launches[i].id,
+			description: {
+				launchWindow: 'start: '+ launches[i].windowstart +'&lt;br/> end: '+ launches[i].windowend,
+				missionName: (currentMission != null)? currentMission.missions[0].name : '',
+				missionDescription: (currentMission != null)? currentMission.missions[0].description : '',
+				rocketName: launches[i].name,
+				image: getImageFromRocketName(launches[i].name.split('|')[0].replace(/([0-9]+\,[0-9]+|[\(\)\+]*| $)*/g, ''))
+			}
+		}
+
+		launchesCards[i] = new LaunchCard('id'+ i, launchesObjects[i].description);
+
+	}
+
+	return launchesCards;
+	
+}
+
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="LaunchCard.html">LaunchCard</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getImageFromRocketName">getImageFromRocketName</a></li><li><a href="global.html#getLaunchesAfter">getLaunchesAfter</a></li><li><a href="global.html#getLaunchesAfterObjects">getLaunchesAfterObjects</a></li><li><a href="global.html#getLaunchesFromRocketName">getLaunchesFromRocketName</a></li><li><a href="global.html#getLaunchesFromRocketNameObjects">getLaunchesFromRocketNameObjects</a></li><li><a href="global.html#getMissionFromLaunchId">getMissionFromLaunchId</a></li><li><a href="global.html#getNNextLaunches">getNNextLaunches</a></li><li><a href="global.html#getNNextLaunchesObjects">getNNextLaunchesObjects</a></li><li><a href="global.html#getRemote">getRemote</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Mar 22 2019 00:59:54 GMT+0100 (Central European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
