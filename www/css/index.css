@@ -26,20 +26,8 @@ h1{
     font-family: 'roboto';
 }
 
-header{
-    text-align: center;
-    color: whitesmoke;
-    width: 100%;
-    background-color: black;
-    background-attachment: fixed;
-    font-size: 60px;
-    font-weight: bold;
-    font-family: "title", Times, serif;
-}
-
 div.rock{
     background-attachment: fixed;
-    /*width: 100%;*/
     margin: 0;
     padding: 1px;
     text-align: justify;
