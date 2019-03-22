@@ -20,45 +20,14 @@
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
 
-/*.event {
-    border-radius:4px;
-    -webkit-border-radius:4px;
-    color:#FFFFFF;
-    font-size:12px;
-    margin:0px 30px;
-    padding:2px 0px;
-}
-
-.event.listening {
-    background-color:#333333;
-    display:block;
-}
-
-.event.received {
-    background-color:#4B946A;
-    display:none;
-}*/
-
 h1{
     text-align: center;
     color: white;
     font-family: 'roboto';
 }
 
-header{
-    text-align: center;
-    color: whitesmoke;
-    width: 100%;
-    background-color: black;
-    background-attachment: fixed;
-    font-size: 60px;
-    font-weight: bold;
-    font-family: "title", Times, serif;
-}
-
 div.rock{
     background-attachment: fixed;
-    /*width: 100%;*/
     margin: 0;
     padding: 1px;
     text-align: justify;
@@ -79,12 +48,7 @@ img.imgRock{
 h2.rockName{
     font-size: 1.2em;
     color: white;
-    font-family: "roboto", Times, serif;
-   /* background-color: rgba(255, 255, 255, 1);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
-    /*padding: 0px;
-    margin: 0;
-    margin-top: 15%;*/
+    font-family: "roboto";
     text-align: center;
     height: 20px;
     overflow: hidden;
@@ -94,20 +58,14 @@ h3.rockDate{
     font-size: 1em;
     color: white;
     font-family: "roboto", Times, serif;
-    /*margin: 0;
-    background-color: rgba(255, 255, 255, 1);
-    padding: 1px;*/
     text-align: center;
 }
 
 div.desc{
-    /*display: none;*/
     font-size: 1em;
     color: white;
     font-family: "roboto", Times, serif;
-    /*background-color: rgba(255, 255, 255, 1);*/
     padding: 5%;
-    /*margin: 0;*/
 }
 
 body{
@@ -136,7 +94,6 @@ input {
     font-size: 1.2em;
     color: white;
     border: solid 1px white;
-    /*border-radius: 50px;*/
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
     background-color: rgba(0, 0, 0, 0);
@@ -149,7 +106,6 @@ button {
     font-size: 1.2em;
     color: white;
     border: solid 1px white;
-    /*border-radius: 50px;*/
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
     background-color: rgba(0, 0, 0, 0);
@@ -166,11 +122,6 @@ input:focus, button:focus {
 span{
     color: white;
     font-family: 'roboto';
-}
-
-@font-face {
-    font-family: 'title';
-    src: url('../fonts/anc.ttf');
 }
 
 @font-face {
